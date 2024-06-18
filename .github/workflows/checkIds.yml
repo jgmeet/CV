@@ -9,7 +9,3 @@ on:
 jobs:
   call-reusable-workflow:
     uses: jgmeet/jira-integration/.github/workflows/merge-check.yml@main
-    with:
-      branches: ["main"]
-      email: ${{ secrets.EMAIL }}
-      api_token: ${{ secrets.API_TOKEN }}

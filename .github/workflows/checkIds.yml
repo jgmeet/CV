@@ -45,7 +45,7 @@ jobs:
         echo "jira_ids=$OTHER_IDS" >> $GITHUB_ENV
         echo "repo_name=$REPO_NAME" >> $GITHUB_ENV
 
-  call-reusable-workflow:
+  call-workflow:
     runs-on: ubuntu-latest
     needs: extract-information
 

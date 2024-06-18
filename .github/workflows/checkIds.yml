@@ -50,7 +50,7 @@ jobs:
     needs: extract-information
 
     uses: jgmeet/jira-integration/.github/workflows/merge-check.yml@main
-      with:
-        CM_IDS: ${{ env.cm_ids }}
-        JIRA_IDS: ${{ env.jira_ids }}
-        REPO_NAME: ${{ env.repo_name }}
+    with:
+      CM_IDS: ${{ env.cm_ids }}
+      JIRA_IDS: ${{ env.jira_ids }}
+      REPO_NAME: ${{ env.repo_name }}

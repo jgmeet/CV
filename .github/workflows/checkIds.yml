@@ -1,5 +1,4 @@
-# .github/workflows/use-jira-integration-workflow.yml
-name: Use Jira Integration Workflow
+name: Check for CM and Jira issue IDs provided in PR description
 
 on:
   pull_request:
@@ -7,5 +6,21 @@ on:
       - main
 
 jobs:
-  call-reusable-workflow:
+  check-merge-ids:
     uses: jgmeet/jira-integration/.github/workflows/merge-check.yml@main
+    with:
+      EMAIL: ${{ secrets.EMAIL }}
+      API_TOKEN: ${{ secrets.API_TOKEN }}
+
+    steps:
+    - name: Checkout template repository
+      uses: actions/checkout@v4
+      with:
+        repository: jgmeet/jira-integration
+        path: templates
+
+    - name: Run Template Workflow
+      run: |
+        cp -r templates/. .
+        npm install
+        node checkMergeDescriptionIDs.js
